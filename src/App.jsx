@@ -2,40 +2,13 @@ import { useEffect, useState } from "react";
 import AddTask from "./components/AddTask";
 import Tasks from "./components/Tasks";
 import {v4} from "uuid";
-import { json } from "react-router-dom";
 import Title from "./components/Title";
-
 
 function App() {
 
   const [tasks,setTasks] = useState(
     JSON.parse(localStorage.getItem("tasks")) || []
 );
-
-//TRABALHANDO COM API
-
- useEffect(() => {
-  const fetchTasks = async () => {
-    //CHAMANDO A API
-    const response = await fetch(
-      'https://jsonplaceholder.typicode.com/todos?_limit=10', 
-      {
-      method: "GET"
-    }
-  )
-    
-    //PEGAR OS DADOS QUE ELA RETORNA
-    const data = await response.json() //convertendo a resposta da api para JSON
-
-    //ARMAZENAR ESSES DADOS NO STATE
-    setTasks(data)
-  }
-  // fetchTasks();
-  // (OPCIONAL: UTILIZANDO API)
-  
-
- }, [])
-
 
 //armazenando os dados localmente
 
@@ -44,15 +17,12 @@ function App() {
 
  }, [tasks])
 
-
-
   function onTaskClick(taskId) {
     const newTasks = tasks.map((task) => {
       //É NECESSÁRIO ATUALIZAR ESSA TAREFA
       if (task.id === taskId) {
         return {...task, isCompleted: !task.isCompleted}
       }
-
 
       //NÃO PRECISO ATUALIZAR ESSA TAREFA
       return task

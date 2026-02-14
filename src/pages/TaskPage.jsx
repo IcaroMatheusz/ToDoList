@@ -17,9 +17,8 @@ function TaskPage() {
                <Title>Detalhes da Tarefa</Title>
             </div>
 
-
             <div className="bg-slate-200 p-4 rounded-md">
-                <h2 className="text-xl text-white font-bold text-slate-600">
+                <h2 className="text-xl font-bold text-slate-600">
                     {title}
                 </h2>
                 <p className="text-slate-600">
@@ -27,7 +26,7 @@ function TaskPage() {
                 </p>
             </div>
         </div>
-        
+    
     </div>
     )
 }
